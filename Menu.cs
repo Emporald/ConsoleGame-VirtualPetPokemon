@@ -11,7 +11,7 @@ namespace VirtualPets
     internal class Menu
     {
         public static int choice;
-        public void Run()
+        public static void Run()
         {
             Clear();
             Title = ">>> Virtual Pet Simulator (Pokemon Edition) <<<"; /// Title of the Window
@@ -35,19 +35,21 @@ __________       __
             WriteLine("1 > Choose a Pet");
             WriteLine("2 > Exit Virtual Pet Game");
             WriteLine();
-            int MenuChoice = Convert.ToInt32((Console.ReadLine()));
+            string MenuChoice = (Console.ReadLine());
             {
                 switch (MenuChoice)
                 {
-                    case 1:
+                    case "1":
                         choosePet();
                         break;
 
-                    case 2:
+                    case "2":
                         closeProgram();
                         break;
 
                     default:
+                        WriteLine("!!! >>> Please choose an option from the list <<< !!!");
+                        System.Threading.Thread.Sleep(2000);
                         Run();
                         break;
                 }
@@ -69,35 +71,42 @@ __________       __
             WriteLine(">>> 3 <<<");
             Charmander c = new Charmander();
             c.PetGreeting();
-            WriteLine();
+            WriteLine("--------------------------------------------------------------------");
             WriteLine("Which Pokemon would you like to choose?");
-            WriteLine("Insert Pet Number");
-            WriteLine(choice);
-            int PetChoice = Convert.ToInt32(Console.ReadLine());
+            WriteLine("Insert Pet Number / 4 = Main Menu");
+            WriteLine(choice); /// DELETE THIS AT THE END !!!
+            string PetChoice = (Console.ReadLine());
 
-            if (PetChoice == 1)
+            if (PetChoice == "1")
             {
-                /// b.PetGreeting();
                 choice = 1;
-                World.setWorld();     
+                World w = new World(a);
+                w.setWorld(choice);     
             }
 
-            else if (PetChoice == 2)
+            else if (PetChoice == "2")
             {
-                /// b.PetGreeting();
                 choice = 2;
-                World.setWorld();
+                World w = new World(b);
+                w.setWorld(choice); 
             }
 
-            else if (PetChoice == 3)
+            else if (PetChoice == "3")
             {
-                /// c.PetGreeting();
                 choice = 3;
-                World.setWorld();
+                World w = new World(c);
+                w.setWorld(choice); 
+            }
+
+            else if (PetChoice == "4")
+            {
+                Run();
             }
 
             else
             {
+                WriteLine("!!! >>> Please choose an option from the list <<< !!!");
+                System.Threading.Thread.Sleep(2000);
                 choosePet();
             }
 

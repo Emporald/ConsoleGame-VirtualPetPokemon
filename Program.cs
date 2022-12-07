@@ -6,8 +6,7 @@ namespace VirtualPets
     {
         static void Main(string[] args)
         {
-         Menu myMenu = new Menu();
-            myMenu.Run();
+            Menu.Run();
         }
     }
 

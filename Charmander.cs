@@ -15,15 +15,8 @@ namespace VirtualPets
             PetType = "Fire";
             PetHealthPoints = 100;
             PetHungerLevel = 100;
-            PetAlive = true;
 
         }
-        public void PetGreeting()
-        {
-          
-            WriteLine($"My name is {PetName}, and I'm {PetType} type Pokemon!");
-            WriteLine($"Currently my HP is at {PetHealthPoints}/100, and my hunger level is {PetHungerLevel}/100");
-            WriteLine($"Is this pet alive? - {PetAlive}");
-        }
+        
     }
 }
