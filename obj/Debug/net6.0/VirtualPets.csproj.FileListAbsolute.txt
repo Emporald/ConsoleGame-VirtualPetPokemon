@@ -1,0 +1,30 @@
+C:\Users\senku\Desktop\COM185 Object Priented Programming\Task 4\VirtualPets\VirtualPets\bin\Debug\net6.0\VirtualPets.exe
+C:\Users\senku\Desktop\COM185 Object Priented Programming\Task 4\VirtualPets\VirtualPets\bin\Debug\net6.0\VirtualPets.deps.json
+C:\Users\senku\Desktop\COM185 Object Priented Programming\Task 4\VirtualPets\VirtualPets\bin\Debug\net6.0\VirtualPets.runtimeconfig.json
+C:\Users\senku\Desktop\COM185 Object Priented Programming\Task 4\VirtualPets\VirtualPets\bin\Debug\net6.0\VirtualPets.dll
+C:\Users\senku\Desktop\COM185 Object Priented Programming\Task 4\VirtualPets\VirtualPets\bin\Debug\net6.0\VirtualPets.pdb
+C:\Users\senku\Desktop\COM185 Object Priented Programming\Task 4\VirtualPets\VirtualPets\obj\Debug\net6.0\VirtualPets.csproj.AssemblyReference.cache
+C:\Users\senku\Desktop\COM185 Object Priented Programming\Task 4\VirtualPets\VirtualPets\obj\Debug\net6.0\VirtualPets.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\senku\Desktop\COM185 Object Priented Programming\Task 4\VirtualPets\VirtualPets\obj\Debug\net6.0\VirtualPets.AssemblyInfoInputs.cache
+C:\Users\senku\Desktop\COM185 Object Priented Programming\Task 4\VirtualPets\VirtualPets\obj\Debug\net6.0\VirtualPets.AssemblyInfo.cs
+C:\Users\senku\Desktop\COM185 Object Priented Programming\Task 4\VirtualPets\VirtualPets\obj\Debug\net6.0\VirtualPets.csproj.CoreCompileInputs.cache
+C:\Users\senku\Desktop\COM185 Object Priented Programming\Task 4\VirtualPets\VirtualPets\obj\Debug\net6.0\VirtualPets.dll
+C:\Users\senku\Desktop\COM185 Object Priented Programming\Task 4\VirtualPets\VirtualPets\obj\Debug\net6.0\refint\VirtualPets.dll
+C:\Users\senku\Desktop\COM185 Object Priented Programming\Task 4\VirtualPets\VirtualPets\obj\Debug\net6.0\VirtualPets.pdb
+C:\Users\senku\Desktop\COM185 Object Priented Programming\Task 4\VirtualPets\VirtualPets\obj\Debug\net6.0\VirtualPets.genruntimeconfig.cache
+C:\Users\senku\Desktop\COM185 Object Priented Programming\Task 4\VirtualPets\VirtualPets\obj\Debug\net6.0\ref\VirtualPets.dll
+C:\Users\tobyr\Downloads\VirtualPets\VirtualPets\bin\Debug\net6.0\VirtualPets.exe
+C:\Users\tobyr\Downloads\VirtualPets\VirtualPets\bin\Debug\net6.0\VirtualPets.deps.json
+C:\Users\tobyr\Downloads\VirtualPets\VirtualPets\bin\Debug\net6.0\VirtualPets.runtimeconfig.json
+C:\Users\tobyr\Downloads\VirtualPets\VirtualPets\bin\Debug\net6.0\VirtualPets.dll
+C:\Users\tobyr\Downloads\VirtualPets\VirtualPets\bin\Debug\net6.0\VirtualPets.pdb
+C:\Users\tobyr\Downloads\VirtualPets\VirtualPets\obj\Debug\net6.0\VirtualPets.csproj.AssemblyReference.cache
+C:\Users\tobyr\Downloads\VirtualPets\VirtualPets\obj\Debug\net6.0\VirtualPets.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tobyr\Downloads\VirtualPets\VirtualPets\obj\Debug\net6.0\VirtualPets.AssemblyInfoInputs.cache
+C:\Users\tobyr\Downloads\VirtualPets\VirtualPets\obj\Debug\net6.0\VirtualPets.AssemblyInfo.cs
+C:\Users\tobyr\Downloads\VirtualPets\VirtualPets\obj\Debug\net6.0\VirtualPets.csproj.CoreCompileInputs.cache
+C:\Users\tobyr\Downloads\VirtualPets\VirtualPets\obj\Debug\net6.0\VirtualPets.dll
+C:\Users\tobyr\Downloads\VirtualPets\VirtualPets\obj\Debug\net6.0\refint\VirtualPets.dll
+C:\Users\tobyr\Downloads\VirtualPets\VirtualPets\obj\Debug\net6.0\VirtualPets.pdb
+C:\Users\tobyr\Downloads\VirtualPets\VirtualPets\obj\Debug\net6.0\VirtualPets.genruntimeconfig.cache
+C:\Users\tobyr\Downloads\VirtualPets\VirtualPets\obj\Debug\net6.0\ref\VirtualPets.dll

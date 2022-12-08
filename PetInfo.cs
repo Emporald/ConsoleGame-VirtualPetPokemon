@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Console; /// Removes need of Console. use. such as WriteLine(""); and not Console.WriteLine("");
 
-namespace VirtualPets
+namespace VirtualPets /// Namespace shows where application resides.
 {
     class  PetInfo
     {
@@ -16,10 +16,11 @@ namespace VirtualPets
         public int PetHealthPoints { get; set; }
         public int PetHungerLevel { get; set; }
 
+        /// Pet greeting used for giving information to the player about the pet.
         public void PetGreeting()
         {
             WriteLine($"My name is {PetName}, and I'm {PetType} type Pokemon!");
-            WriteLine($"Currently my HP is at {PetHealthPoints}/100, and my hunger level is at {PetHungerLevel}/100");
+            WriteLine($"Currently my HP is at ({PetHealthPoints}), and my hunger level is at ({PetHungerLevel})");
         }
 
     }
