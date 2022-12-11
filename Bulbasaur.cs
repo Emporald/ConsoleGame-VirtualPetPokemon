@@ -16,6 +16,8 @@ namespace VirtualPets /// Namespace shows where application resides.
             PetType = "Grass";
             PetHealthPoints = 100;
             PetHungerLevel = 100;
+            PetHappiness = 100;
+            PetTemperature = 22.80;
         }
    
 

@@ -18,7 +18,7 @@ namespace VirtualPets /// Namespace shows where application resides.
         /// Creating a Thread for decreasing Health Points from PetInfo
         public void HealthDown() /// Creates a public void with the name of HealthDown to be called as a thread later on
         {
-            for (int a = 0; a < 50; a--) /// Infinite loop for health to drop down
+            for (int a = 0; a < 50; a--) /// Infinite loop for HealthDown
             {
                 pet.PetHealthPoints -= 5; /// When the loop is going, PetHealthPoints will be minus by 5.
                 Thread.Sleep(30000); /// Stops the thread, for 30000 miliseconds which is equal to 30 seconds.
@@ -28,10 +28,51 @@ namespace VirtualPets /// Namespace shows where application resides.
         /// Creating a Thread for decreasing Hunger Level from PetInfo
         public void HungerDown() /// Creates a public void with the name of HungerDown to be called as a thread later on
         {
-            for (int a = 0; a < 50; a--) /// Infinite loop for health to drop down
+            for (int a = 0; a < 50; a--) /// Infinite loop for HungerDown
             {
                 pet.PetHungerLevel -= 10; /// When the loop is going, PetHungerLevel will be minus by 10.
-                Thread.Sleep(50000); /// Stops the thread, for 50000 miliseconds which is equal to 50 seconds.
+                Thread.Sleep(100000); /// Stops the thread, for 100000 miliseconds which is equal to 50 seconds.
+            }
+        }
+
+        public void HappinessDown() /// Creates a public void with the name of HappinessDown to be called as a thread later on
+        {
+            for (int a = 0; a < 50; a--) /// Infinite loop for HappinessDown
+            {
+                pet.PetHappiness -= 10; /// When the loop is going, PetHappiness will be minus by 10.
+                Thread.Sleep(100000); /// Stops the thread, for 50000 miliseconds which is equal to 50 seconds.
+            }
+        }
+
+        public void PetCoinsUp() /// Creates a public void with the name of PetCoinsUp to be called as a thread later on
+        {
+            for (int a = 0; a < 50; a--) /// Infinite loop for PetCoins
+            {
+                pet.PetCoins += 20; /// When the loop is going, PetHappiness will be minus by 10.
+                Thread.Sleep(100000); /// Stops the thread, for 100000 miliseconds which is equal to 50 seconds.
+            }
+        }
+
+        public void TempDown() /// Creates a public void with the name of TempDown to be called as a thread later on
+        {
+            pet.PetTemperature = Math.Round(pet.PetTemperature, 2);
+            for (int a = 0; a < 50; a--) /// Infinite loop for tempdown
+            {
+
+                if (pet.PetTemperature <= 22.80) /// If temperate is below 22.80
+                {
+                    pet.PetTemperature -= 0.1; /// Minuses temp by 0.1
+                    pet.PetTemperature = Math.Round(pet.PetTemperature, 2); /// Rounds it to 2 decimal places
+                }
+
+                else if (pet.PetTemperature == 16.60) /// If temperature is exactly 16.60 do nothing and save value
+                {
+                    pet.PetTemperature -= 0;
+                    pet.PetTemperature = 16.60;
+                    pet.PetTemperature = Math.Round(pet.PetTemperature, 2); /// Rounds it to 2 decimal places
+                }
+
+                Thread.Sleep(100000); /// Stops the thread, for 1 miliseconds which is equal to 50 seconds.
             }
         }
 
@@ -55,8 +96,14 @@ namespace VirtualPets /// Namespace shows where application resides.
                 Clear(); /// Clears the console
                 Thread hp = new Thread(HealthDown); /// Creates a thread hp which links to HealthDown class
                 Thread hl = new Thread(HungerDown); /// Creates a thread hl which links to HungerDown class
+                Thread hd = new Thread(HappinessDown); /// Creates a thread hd which links to HapinessDown class
+                Thread coins = new Thread(PetCoinsUp); /// Creates a thread hd which links to HapinessDown class
+                Thread temps = new Thread(TempDown); /// Creates a thread hd which links to HapinessDown class
                 hp.Start(); /// Calls HP thread and starts it
                 hl.Start(); /// Calls HL thread and starts it
+                hd.Start(); /// Calls HD thread and starts it
+                coins.Start(); /// Calls Coins thread and starts it
+                temps.Start(); /// Calls Temps thread and starts it
                 WriteLine(@"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@////&////////////&(&@@@@@@@@@@@@@@@@@@
@@ -109,7 +156,8 @@ namespace VirtualPets /// Namespace shows where application resides.
                     WriteLine("---------------------------------------------");
                     WriteLine("You Pet your Bulbasaur");
                     WriteLine("He seems to be happy (^_^)");
-                    System.Threading.Thread.Sleep(5000); /// Stops the system for 5000 miliseconds, so the user has time to read the console.
+                    pet.PetHappiness += 100; /// Adds 100 to the happiness meter.
+                    System.Threading.Thread.Sleep(3000); /// Stops the system for 3000 miliseconds, so the user has time to read the console.
                 }
 
                 else if (BulbasaurChoice == "2") /// If the input is 2, then it will start this command line.
@@ -139,14 +187,15 @@ namespace VirtualPets /// Namespace shows where application resides.
                     WriteLine("What would you like to do?");
                     WriteLine("1 > Give a Health Potion");
                     WriteLine("2 > Give some Food");
-                    WriteLine("3 > Return");
+                    WriteLine("3 > Turn on the Heating");
+                    WriteLine("4 > Return");
                     WriteLine();
                     string InventoryBulbasaur = (Console.ReadLine()); /// Reads what user will input as a string it saves in as InventoryBulbasaur
 
                         if (InventoryBulbasaur == "1")
-                    {
-                           Clear();
-                           WriteLine(@"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                        {
+                            Clear();
+                            WriteLine(@"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@////&////////////&(&@@@@@@@@@@@@@@@@@@
 @@@@@@@/////#//////////////@//@@@@@@@@@@@@@@@
@@ -167,30 +216,30 @@ namespace VirtualPets /// Namespace shows where application resides.
                             WriteLine("---------------------------------------------------------------");
                             WriteLine("You try to give your Bulbasaur a Health Potion.");
 
-                        if (pet.PetHealthPoints < 100) /// Checks if PetHealthPoints is lower than 100
-                        {
-                            pet.PetHealthPoints += 20; /// Addds 20 points to PetHealthPoints
-                            WriteLine("You give your Bulbasaur a Health Potion + 20 Health Points...");
-                            System.Threading.Thread.Sleep(3000); /// Sleeps the console for 3000 miliseconds
-                            setWorld(1); /// Loops back to the world 1, which communicates with choice, and this will ensure that it goes back to the correct pet
-                        }
-
-                        else if (pet.PetHealthPoints == 100) /// checks If pethealthpoints == 100
-                        {
-                            WriteLine("Your Bulbasaur is already at full health...");
-                            System.Threading.Thread.Sleep(3000); /// sleeps console for 3000 miliseconds
-                        }
-
-                        else
-                        {
+                            if (pet.PetHealthPoints < 100) /// Checks if PetHealthPoints is lower than 100
+                            {
+                                pet.PetHealthPoints += 20; /// Addds 20 points to PetHealthPoints
+                                WriteLine("You give your Bulbasaur a Health Potion + 20 Health Points...");
+                                System.Threading.Thread.Sleep(3000); /// Sleeps the console for 3000 miliseconds
                                 setWorld(1); /// Loops back to the world 1, which communicates with choice, and this will ensure that it goes back to the correct pet
+                            }
+
+                            else if (pet.PetHealthPoints == 100) /// checks If pethealthpoints == 100
+                            {
+                                WriteLine("Your Bulbasaur is already at full health...");
+                                System.Threading.Thread.Sleep(3000); /// sleeps console for 3000 miliseconds
+                            }
+
+                            else
+                            {
+                                setWorld(1); /// Loops back to the world 1, which communicates with choice, and this will ensure that it goes back to the correct pet
+                            }
+
+
                         }
 
-
-                    }
-
-                    else if (InventoryBulbasaur == "2") /// If user input was 2 for InventoryBulbasaur
-                    {
+                        else if (InventoryBulbasaur == "2") /// If user input was 2 for InventoryBulbasaur
+                        {
                             Clear(); /// Clears the console
                             WriteLine(@"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -213,37 +262,65 @@ namespace VirtualPets /// Namespace shows where application resides.
                             WriteLine("---------------------------------------------------------------");
                             WriteLine("You try to give your Bulbasaur some food.");
 
-                        if (pet.PetHungerLevel < 100) /// Checks if PetHungerLevel is lower than 100
+                            if (pet.PetHungerLevel < 100) /// Checks if PetHungerLevel is lower than 100
+                            {
+                                pet.PetHungerLevel += 30; /// adds 30 to PetHungerLevel
+                                WriteLine("You give your Bulbasaur some food, + 30 Hunger Points...");
+                                System.Threading.Thread.Sleep(3000); /// Sleeeps the console for 3000 miliseconds
+                                setWorld(1); /// Loops back to the world 1, which communicates with choice, and this will ensure that it goes back to the correct pet
+                            }
+
+                            else if (pet.PetHungerLevel == 100) /// Checks if hunger is equal to 100, and if it is
+                            {
+                                WriteLine("Your Bulbasaur is not hungry...");
+                                System.Threading.Thread.Sleep(3000); /// Sleeps console for 3000 miliseconds
+                            }
+
+                            else
+                            {
+                                setWorld(1); /// Loops back to the world 1, which communicates with choice, and this will ensure that it goes back to the correct pet
+                            }
+                        }
+
+                        else if (InventoryBulbasaur == "3")
                         {
-                            pet.PetHungerLevel += 30; /// adds 30 to PetHungerLevel
-                            WriteLine("You give your Bulbasaur some food, + 30 Hunger Points...");
-                            System.Threading.Thread.Sleep(3000); /// Sleeeps the console for 3000 miliseconds
+                            Clear();
+                            WriteLine(@"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@@@@@//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@@@@@@@////&////////////&(&@@@@@@@@@@@@@@@@@@
+@@@@@@@/////#//////////////@//@@@@@@@@@@@@@@@
+@@@@@////////@/////@***@//@@%*****%@&****@@@@
+@@@@//////////&///%/**************@%%****/@@@
+@@@////////////&//(/************%%%%******@@@
+@@/@/////////////@//*****@**/*%%*****@*@/@@@@
+@((@///////////@*@//***( % %@******@%%@*@ @@@
+@(((@///////@%%%&*****@ @% %%@**********@%@/*
+@@((((&((@@%%%%@*******& @%%%@***************
+@@@@@((******&*********@***********#****@(*@@
+@@@@@********/*******@*****************@@@@@@
+@@@@*@%%%@**&****@****///////////////****@@@@
+@@@@***@@***@*@%%%****@/////////////****%*@@@
+@@@@/*******@**@%%****@/////////@///***%%@*@@
+@@@@@///////&/*******@/*****&@@@@@///******@@
+@@@@@@@ (.@.#@/@&&/&@@@@@@@@@@@@@@@@%/@ @.@@@");
+                            WriteLine("---------------------------------------------");
+                            WriteLine("You turn on heating, +0.10 Temperature");
+                            WriteLine("He seems to be happy (^_^)");
+                            pet.PetTemperature += 0.10;
+                            System.Threading.Thread.Sleep(5000);
+                        }
+
+                        else if (InventoryBulbasaur == "4")
+                        {
                             setWorld(1); /// Loops back to the world 1, which communicates with choice, and this will ensure that it goes back to the correct pet
                         }
 
-                        else if (pet.PetHungerLevel == 100) /// Checks if hunger is equal to 100, and if it is
+                        else /// If user inputs a value which not in the list, it get an error
                         {
-                            WriteLine("Your Bulbasaur is not hungry...");
-                            System.Threading.Thread.Sleep(3000); /// Sleeps console for 3000 miliseconds
+                            WriteLine("!!! >>> Please choose an option from the list <<< !!!");
+                            System.Threading.Thread.Sleep(2000); /// Sleeps the console for 2000 miliseconds
+
                         }
-
-                        else
-                        {
-                            setWorld(1); /// Loops back to the world 1, which communicates with choice, and this will ensure that it goes back to the correct pet
-                        }
-                        }
-
-                    else if (InventoryBulbasaur == "3") 
-                    {
-                            setWorld(1); /// Loops back to the world 1, which communicates with choice, and this will ensure that it goes back to the correct pet
-                    }
-
-                    else /// If user inputs a value which not in the list, it get an error
-                    {
-                        WriteLine("!!! >>> Please choose an option from the list <<< !!!");
-                        System.Threading.Thread.Sleep(2000); /// Sleeps the console for 2000 miliseconds
-
-                    }
 
 
                 }
@@ -276,10 +353,16 @@ namespace VirtualPets /// Namespace shows where application resides.
 
                 else if (choice == 2)
                 {
-                    Thread hp = new Thread(HealthDown);
-                    Thread hl = new Thread(HungerDown);
-                    hp.Start();
-                    hl.Start();
+                    Thread hp = new Thread(HealthDown); /// Creates a thread hp which links to HealthDown class
+                    Thread hl = new Thread(HungerDown); /// Creates a thread hl which links to HungerDown class
+                    Thread hd = new Thread(HappinessDown); /// Creates a thread hd which links to HapinessDown class
+                    Thread coins = new Thread(PetCoinsUp); /// Creates a thread hd which links to HapinessDown class
+                    Thread temps = new Thread(TempDown); /// Creates a thread hd which links to HapinessDown class
+                    hp.Start(); /// Calls HP thread and starts it
+                    hl.Start(); /// Calls HL thread and starts it
+                    hd.Start(); /// Calls HD thread and starts it
+                    coins.Start(); /// Calls Coins thread and starts it
+                    temps.Start(); /// Calls Temps thread and starts it
                     Clear();
                     WriteLine(@"@@@@@@@@@@@@@@*,,,%@@@@@@@@@@@@@@@@@@@@@  
 @@@@@@@@@@,..,,**,**,**@@@@@@@@@@@@@@@@@  
@@ -330,7 +413,8 @@ namespace VirtualPets /// Namespace shows where application resides.
                         WriteLine("---------------------------------------------");
                         WriteLine("You Pet your Squirtle");
                         WriteLine("She seems to be happy (^_^)");
-                        System.Threading.Thread.Sleep(5000);
+                        pet.PetHappiness += 100; /// Adds 100 to the happiness meter.
+                        System.Threading.Thread.Sleep(3000);
                     }
 
                     else if (SquirtleChoice == "2")
@@ -359,7 +443,8 @@ namespace VirtualPets /// Namespace shows where application resides.
                         WriteLine("What would you like to do?");
                         WriteLine("1 > Give a Health Potion");
                         WriteLine("2 > Give some Food");
-                        WriteLine("3 > Return");
+                        WriteLine("3 > Turn on the Heating");
+                        WriteLine("4 > Return");
                         WriteLine();
                         string InventorySquirtle = (Console.ReadLine());
 
@@ -453,6 +538,33 @@ namespace VirtualPets /// Namespace shows where application resides.
 
                         else if (InventorySquirtle == "3")
                         {
+                            Clear();
+                            WriteLine(@"@@@@@@@@@@@@@@*,,,%@@@@@@@@@@@@@@@@@@@@@  
+@@@@@@@@@@,..,,**,**,**@@@@@@@@@@@@@@@@@  
+@@@@@@@@@*,,**,*,@ @****@@@@@@@@@@@@@@@@  
+@@@@@@@@#,,,*,,,&@%&/////@@@@@@@@@@@@@@@  
+@@@@@@@%*****,,,,,,*/////@@@@@@@@@@@@@@@  
+@@@@@@@@////////////////@@@@@@@@@@@@@@@@  
+@@@@@@@@@@/&/////////(,,(*@@@@@@@@@@@@@@  
+@@@@,,,,,%..,*****%.,,*//(@@@@@@@@@@@@@@  
+@(/,*,,,....../@@,,,,,*///(/@@@@@@@@@@@@  
+@@@/*/(@.......,%,//****,*/**@@@@@@@@@@@  
+@@@@@@@#.....#.,,,#//**,,(//(@@@@@@@@@@@  
+@@@@@@@@,,,,,@..,.,****&,&((@@@***,,*/(@  
+@@@@@@,,,,...%..,**@,,,,**(@@////&/////&  
+@@@@@,.,,*/****,#*/,,,,,,,(////////////@  
+@@@@@#*/////@@@@@@@,*,*,,*///////////@@@  
+@@@@@@@*@@@@@@@@@@@@///////@@@@@@@@@@@@@  
+@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@");
+                            WriteLine("---------------------------------------------");
+                            WriteLine("You turn on heating, +0.10 Temperature");
+                            WriteLine("She seems to be happy (^_^)");
+                            pet.PetTemperature += 0.10;
+                            System.Threading.Thread.Sleep(5000);
+                        }
+
+                        else if (InventorySquirtle == "4")
+                        {
                             setWorld(2);
                         }
 
@@ -498,10 +610,16 @@ namespace VirtualPets /// Namespace shows where application resides.
 
                 else if (choice == 3)
                 {
-                    Thread hp = new Thread(HealthDown);
-                    Thread hl = new Thread(HungerDown);
-                    hp.Start();
-                    hl.Start();
+                    Thread hp = new Thread(HealthDown); /// Creates a thread hp which links to HealthDown class
+                    Thread hl = new Thread(HungerDown); /// Creates a thread hl which links to HungerDown class
+                    Thread hd = new Thread(HappinessDown); /// Creates a thread hd which links to HapinessDown class
+                    Thread coins = new Thread(PetCoinsUp); /// Creates a thread hd which links to HapinessDown class
+                    Thread temps = new Thread(TempDown); /// Creates a thread hd which links to HapinessDown class
+                    hp.Start(); /// Calls HP thread and starts it
+                    hl.Start(); /// Calls HL thread and starts it
+                    hd.Start(); /// Calls HD thread and starts it
+                    coins.Start(); /// Calls Coins thread and starts it
+                    temps.Start(); /// Calls Temps thread and starts it
                     Clear();
                     WriteLine(@"@@@@@@@@@,,,(@@@@@@@@@@@@@@@@%%%%%%%    
 @@@@@,..,,,,,,**@@@@@@@@@@@@@%%%%%%%    
@@ -552,7 +670,8 @@ namespace VirtualPets /// Namespace shows where application resides.
                         WriteLine("---------------------------------------------");
                         WriteLine("You Pet your Charmander");
                         WriteLine("He seems to be happy (^_^)");
-                        System.Threading.Thread.Sleep(5000);
+                        pet.PetHappiness += 100; 
+                        System.Threading.Thread.Sleep(3000);
                     }
 
                     else if (CharmanderChoice == "2")
@@ -581,7 +700,8 @@ namespace VirtualPets /// Namespace shows where application resides.
                         WriteLine("What would you like to do?");
                         WriteLine("1 > Give a Health Potion");
                         WriteLine("2 > Give some Food");
-                        WriteLine("3 > Return");
+                        WriteLine("3 > Turn on the Heating");
+                        WriteLine("4 > Return");
                         WriteLine();
                         string InventoryCharmander = (Console.ReadLine());
 
@@ -675,6 +795,33 @@ namespace VirtualPets /// Namespace shows where application resides.
                         }
 
                         else if (InventoryCharmander == "3")
+                        {
+                            Clear();
+                            WriteLine(@"@@@@@@@@@,,,(@@@@@@@@@@@@@@@@%%%%%%%    
+@@@@@,..,,,,,,**@@@@@@@@@@@@@%%%%%%%    
+@@@@,,**,,,*** #/@@@@@@@@@@@%%%%%%%%    
+@@@% ,,,,,,,,(*@#&@@@@@@@@@#%%%%%%%%    
+@@@#%,**,,,,,*////@@@@@@@@%%%%%%%%%%    
+@@@(,,,,***,,*/@//@@@@@@@@%#%%%%(#%%    
+@@@@@//(((*,,*//*@@@@@@@@@####%#//%%    
+@@@@@@@@//*@////*,(@@@@@@@@#%%/*/./#    
+@/,*,,,,,     ,,,,,*,,,,/@@@%./*/../    
+@@****//    ..  *(***///@@@#%%.,../#    
+@@@@@@@#    .... ,,,@@@@@@@###%#/%%%    
+@@@@@@@,   .....  ,,,,@@@@@@@@@/,@@@    
+@@@@@,,,,.....,,,,.,,,,@@@@@%//@@@@@    
+@@@@.,,*/(,.,.,..,,,,,*//////,@@@@@@    
+@@@@///////*@@@&,.//////@*%@@@@@@@@@    
+@@ #. //&@@@@@@@@@@@/////@@@@@@@@@@@    
+@@@@@@@@@@@@@@@@@@@@@@@.@@@@@@@@@@@@");
+                            WriteLine("---------------------------------------------");
+                            WriteLine("You turn on heating, +0.10 Temperature");
+                            WriteLine("He seems to be happy (^_^)");
+                            pet.PetTemperature += 0.10;
+                            System.Threading.Thread.Sleep(5000);
+                        }
+
+                        else if (InventoryCharmander == "4")
                         {
                             setWorld(3);
                         }
